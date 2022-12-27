@@ -1,16 +1,12 @@
-var data = null;
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '1c836a1bddmsh69b8f2a9ca13833p1f5a23jsn21e2345b7c1f',
+		'X-RapidAPI-Host': 'gas-price.p.rapidapi.com'
+	}
+};
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === this.DONE) {
-    console.log(this.responseText);
-  }
-});
-
-xhr.open("GET", "https://api.collectapi.com/gasPrice/stateUsaPrice?state=WA");
-xhr.setRequestHeader("content-type", "application/json");
-xhr.setRequestHeader("authorization", "apikey 4sPawpUZDulDdRTPQCAmVj:7CyeP22EtEJE7AmydN0e7P");
-
-xhr.send(data);
+fetch('https://gas-price.p.rapidapi.com/europeanCountries', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
